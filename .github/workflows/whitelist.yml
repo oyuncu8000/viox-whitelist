@@ -9,11 +9,9 @@ jobs:
   whitelist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4
-      
-      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b  # v5
-        with:
-          python-version: '3.11'
+      - name: Kodu indir
+        run: |
+          curl -o whitelist_guncelle.py https://raw.githubusercontent.com/oyuncu8000/viox-whitelist/main/whitelist_guncelle.py
 
       - name: Paketleri kur
         run: pip install requests beautifulsoup4
