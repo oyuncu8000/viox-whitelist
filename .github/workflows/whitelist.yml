@@ -2,16 +2,16 @@ name: Minecraft Whitelist Güncelle
 
 on:
   schedule:
-    - cron: '0 4 * * *'   # Her gün 04:00 UTC = Türkiye 07:00
-  workflow_dispatch:        # Manuel çalıştırma butonu
+    - cron: '0 4 * * *'
+  workflow_dispatch:
 
 jobs:
   whitelist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4
+      
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b  # v5
         with:
           python-version: '3.11'
 
