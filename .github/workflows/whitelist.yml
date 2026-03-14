@@ -1,0 +1,27 @@
+name: Minecraft Whitelist Güncelle
+
+on:
+  schedule:
+    - cron: '0 4 * * *'   # Her gün 04:00 UTC = Türkiye 07:00
+  workflow_dispatch:        # Manuel çalıştırma butonu
+
+jobs:
+  whitelist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Paketleri kur
+        run: pip install requests beautifulsoup4
+
+      - name: Whitelist güncelle
+        env:
+          ADMIN_URL:  ${{ secrets.ADMIN_URL }}
+          PANEL_URL:  ${{ secrets.PANEL_URL }}
+          API_KEY:    ${{ secrets.API_KEY }}
+          SERVER_ID:  ${{ secrets.SERVER_ID }}
+        run: python whitelist_guncelle.py
